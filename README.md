@@ -43,3 +43,45 @@ SAMPLE-WEB-APP.pub: The public SSH key file.
 
 Security Note
 The SAMPLE-WEB-APP and SAMPLE-WEB-APP.pub files contain sensitive SSH key information. Ensure these files are kept secure and not exposed publicly.
+
+5. Create Dockerfile
+The Dockerfile defines the Docker image for the web application. It uses a lightweight Nginx base image and copies the web application files to the web server's root directory.
+
+6. Install Docker
+Download Docker Desktop for Windows:
+
+Go to the Docker Desktop for Windows download page.
+Click on the "Download for Windows" button.
+Install Docker Desktop:
+
+Run the downloaded installer.
+Follow the installation instructions.
+During the installation, ensure that the option to use WSL 2 instead of Hyper-V is selected if you are using Windows Subsystem for Linux 2.
+Start Docker Desktop:
+
+After the installation is complete, start Docker Desktop from the Start menu.
+Docker Desktop will take a few moments to start up.
+Verify the Installation:
+
+Open a new Command Prompt or PowerShell window.
+Run the following command to verify that Docker is installed correctly:
+
+
+7. Build and Run the Docker Container
+ 
+ 1. Navigate to the Directory: Open a terminal and navigate to the directory containing your Dockerfile. 
+```cd /c/Users/user/sample-web-app/sample_web_app```
+ 2. Build the Docker Image: Run the following command to build the Docker image:
+ ```docker build -t sample-web-app .```
+ 3. Run the Docker Container: Run the following command to start the Docker container:
+```docker run -d -p 80:80 sample-web-app```
+
+8. Bonus Sub-task: Use Docker Compose for a Multi-Container Setup
+
+1. Create a docker-compose.yml File
+
+2. Run the Multi-Container Setup
+Start the Docker Compose environment:
+```docker-compose up -d```
+This will build the web service and start the container.
+

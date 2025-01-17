@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8080:80"
+    container_name: sample-web-container
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./style.css:/usr/share/nginx/html/style.css
+      - ./script.js:/usr/share/nginx/html/script.js
