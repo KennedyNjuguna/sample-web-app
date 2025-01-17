@@ -3,13 +3,13 @@
 This is a simple web application with basic HTML, CSS, and JavaScript.
 
 ## Project Structure
-sample_web_app/ 
-├── index.html 
-├── README.md 
+sample-web-app/
+├── index.html
+├── style.css
+├── script.js
 ├── SAMPLE-WEB-APP 
 ├── SAMPLE-WEB-APP.pub 
-├── script.js 
-└── style.css
+
 
 
 ### Files
