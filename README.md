@@ -1,87 +1,179 @@
-# Sample Web App
+# Sample Web Application
 
-This is a simple web application with basic HTML, CSS, and JavaScript.
+This is a simple web application built with HTML, CSS, and JavaScript, complemented by Docker for containerization. Below is a structured guide to help you understand and implement the project seamlessly.
+
+---
 
 ## Project Structure
+```
 sample-web-app/
-├── index.html
-├── style.css
-├── script.js
-├── SAMPLE-WEB-APP 
-├── SAMPLE-WEB-APP.pub 
+├── index.html           # Main HTML file
+├── style.css            # CSS file for styling
+├── script.js            # JavaScript file for interactivity
+├── SAMPLE-WEB-APP       # Private SSH key file
+├── SAMPLE-WEB-APP.pub   # Public SSH key file
+```
 
+---
 
+## File Descriptions
 
-### Files
+### **index.html**
+The core HTML file that structures the web page and links to the CSS and JavaScript files.
 
-- **index.html**: The main HTML file that structures the web page.
-- **README.md**: This file, which provides an overview of the project.
-- **SAMPLE-WEB-APP**: The private SSH key file.
-- **SAMPLE-WEB-APP.pub**: The public SSH key file.
-- **script.js**: The JavaScript file that adds interactivity to the web page.
-- **style.css**: The CSS file that styles the web page.
+### **style.css**
+Defines the styles and layout of the web page, ensuring a visually appealing design.
 
-## Step-by-Step Instructions
+### **script.js**
+Contains JavaScript logic to add interactivity, such as event handling for user actions.
 
-### 1. Create `index.html`
+### **SAMPLE-WEB-APP & SAMPLE-WEB-APP.pub**
+These are SSH key files used for secure communication and authentication.
+- **SAMPLE-WEB-APP**: Private SSH key (keep secure).
+- **SAMPLE-WEB-APP.pub**: Public SSH key.
 
-The `index.html` file is the main HTML file that structures the web page. It includes the basic HTML structure and links to the CSS and JavaScript files.
+---
 
-2. Create style.css
-The style.css file is used to style the web page. It includes basic styling for the HTML elements.
+## Step-by-Step Guide
 
+### **1. Create the Files**
 
-3. Create script.js
+#### **index.html**
+Define the structure of the web page and include links to style.css and script.js:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the Sample Web App</h1>
+    <button id="changeMessage">Click Me!</button>
+    <p id="message">Hello, World!</p>
+    <script src="script.js"></script>
+</body>
+</html>
+```
 
-The script.js file adds interactivity to the web page. It includes a simple script that changes the message when the button is clicked.
+#### **style.css**
+Create basic styling for your web page:
+```css
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
 
-4. Add SSH Key Files
-The SAMPLE-WEB-APP and SAMPLE-WEB-APP.pub files contain SSH keys. These keys are used for secure communication and authentication. Ensure these files are kept secure and not exposed publicly.
+h1 {
+    color: #333;
+}
 
-SAMPLE-WEB-APP: The private SSH key file.
-SAMPLE-WEB-APP.pub: The public SSH key file.
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-Security Note
-The SAMPLE-WEB-APP and SAMPLE-WEB-APP.pub files contain sensitive SSH key information. Ensure these files are kept secure and not exposed publicly.
+p {
+    color: #555;
+}
+```
 
-5. Create Dockerfile
-The Dockerfile defines the Docker image for the web application. It uses a lightweight Nginx base image and copies the web application files to the web server's root directory.
+#### **script.js**
+Add JavaScript for user interaction:
+```javascript
+document.getElementById('changeMessage').addEventListener('click', () => {
+    document.getElementById('message').textContent = 'You clicked the button!';
+});
+```
 
-6. Install Docker
-Download Docker Desktop for Windows:
+---
 
-Go to the Docker Desktop for Windows download page.
-Click on the "Download for Windows" button.
-Install Docker Desktop:
+### **2. Add SSH Key Files**
+Place the `SAMPLE-WEB-APP` (private key) and `SAMPLE-WEB-APP.pub` (public key) securely in the project directory. Ensure these files are protected and not exposed publicly.
 
-Run the downloaded installer.
-Follow the installation instructions.
-During the installation, ensure that the option to use WSL 2 instead of Hyper-V is selected if you are using Windows Subsystem for Linux 2.
-Start Docker Desktop:
+---
 
-After the installation is complete, start Docker Desktop from the Start menu.
-Docker Desktop will take a few moments to start up.
-Verify the Installation:
+### **3. Create a Dockerfile**
+Define a Dockerfile to containerize your application:
+```dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+```
 
-Open a new Command Prompt or PowerShell window.
-Run the following command to verify that Docker is installed correctly:
+---
 
+### **4. Install Docker**
 
-7. Build and Run the Docker Container
- 
- 1. Navigate to the Directory: Open a terminal and navigate to the directory containing your Dockerfile. 
-```cd /c/Users/user/sample-web-app/sample_web_app```
- 2. Build the Docker Image: Run the following command to build the Docker image:
- ```docker build -t sample-web-app .```
- 3. Run the Docker Container: Run the following command to start the Docker container:
-```docker run -d -p 80:80 sample-web-app```
+#### Steps to Install Docker Desktop:
+1. **Download**:
+   - Visit the [Docker Desktop](https://www.docker.com/products/docker-desktop/) page.
+   - Choose the version for your OS.
 
-8. Bonus Sub-task: Use Docker Compose for a Multi-Container Setup
+2. **Install**:
+   - Run the installer and follow the prompts.
+   - If using Windows, select "WSL 2" instead of Hyper-V during installation.
 
-1. Create a docker-compose.yml File
+3. **Start Docker**:
+   - Launch Docker Desktop from your applications menu.
 
-2. Run the Multi-Container Setup
-Start the Docker Compose environment:
-```docker-compose up -d```
-This will build the web service and start the container.
+4. **Verify Installation**:
+   - Open a terminal and run:
+     ```sh
+     docker --version
+     ```
 
+---
+
+### **5. Build and Run the Docker Container**
+
+#### Steps:
+1. Navigate to the project directory:
+   ```sh
+   cd /path/to/sample-web-app
+   ```
+
+2. Build the Docker image:
+   ```sh
+   docker build -t sample-web-app .
+   ```
+
+3. Run the container:
+   ```sh
+   docker run -d -p 80:80 sample-web-app
+   ```
+
+---
+
+### **6. Bonus: Use Docker Compose for Multi-Container Setup**
+
+#### **Create a `docker-compose.yml` File**
+```yaml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+```
+
+#### **Start the Multi-Container Setup**
+Run:
+```sh
+docker-compose up -d
+```
+This builds and runs your application in a Docker Compose environment.
+
+---
+
+## Security Note
+Ensure sensitive files, such as `SAMPLE-WEB-APP` and `SAMPLE-WEB-APP.pub`, are not exposed to public repositories or unauthorized users. Use `.gitignore` to exclude them from version control.
+
+```gitignore
+SAMPLE-WEB-APP
+SAMPLE-WEB-APP.pub
