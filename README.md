@@ -177,3 +177,201 @@ Ensure sensitive files, such as `SAMPLE-WEB-APP` and `SAMPLE-WEB-APP.pub`, are n
 ```gitignore
 SAMPLE-WEB-APP
 SAMPLE-WEB-APP.pub
+
+# Terraform Infrastructure as Code (IaC) Guide
+
+This guide provides step-by-step instructions to deploy a VPC and an EC2 instance using Terraform modules from the Terraform Registry.
+
+---
+
+## **Prerequisites**
+
+1. Install Terraform:
+   - Download from the [Terraform website](https://www.terraform.io/downloads).
+2. Install AWS CLI (for AWS deployments):
+   - Download and configure using:
+     ```bash
+     aws configure
+     ```
+     Provide your **Access Key**, **Secret Key**, **Region**, and **Output format**.
+3. Create an SSH key pair in your AWS account for accessing the EC2 instance.
+
+---
+
+## **Project Structure**
+
+Create the following files in a new directory for your Terraform project:
+
+```
+terraform-iac/
+├── main.tf        # Main Terraform configuration
+├── variables.tf   # Input variables
+├── outputs.tf     # Outputs
+├── terraform.tfvars # (Optional) Variable values
+```
+
+---
+
+## **Step 1: Initialize Terraform Project**
+
+1. Create a directory for your project:
+   ```bash
+   mkdir terraform-iac
+   cd terraform-iac
+   ```
+
+2. Initialize the project:
+   ```bash
+   terraform init
+   ```
+
+---
+
+## **Step 2: Configure the VPC**
+
+Use the official [Terraform AWS VPC module](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws) to create a VPC, public/private subnets, NAT gateway, and associated routing.
+
+### **`main.tf`: VPC Configuration**
+
+```hcl
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+```
+
+---
+
+## **Step 3: Configure the EC2 Instance**
+
+Use the [Terraform AWS EC2 Instance module](https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws) to deploy an instance within the VPC.
+
+### **`main.tf`: EC2 Configuration**
+
+```hcl
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+
+  name = "single-instance"
+
+  instance_type          = "t2.micro"
+  ami                    = "ami-0c02fb55956c7d316" # Amazon Linux 2 AMI
+  key_name               = "user1" 
+  monitoring             = true
+  vpc_security_group_ids = [module.vpc.default_security_group_id]
+  subnet_id              = module.vpc.public_subnets[0] # Use the first public subnet
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+```
+
+---
+
+## **Step 4: Define Variables**
+
+### **`variables.tf`: Variables for Reusability**
+
+```hcl
+variable "region" {
+  description = "AWS region to deploy resources"
+  default     = "us-east-1"
+}
+
+variable "instance_type" {
+  description = "Instance type for EC2"
+  default     = "t2.micro"
+}
+
+variable "key_name" {
+  description = "SSH key pair name for the instance"
+}
+```
+
+---
+
+## **Step 5: Define Outputs**
+
+### **`outputs.tf`**
+
+```hcl
+output "vpc_id" {
+  description = "ID of the created VPC"
+  value       = module.vpc.vpc_id
+}
+
+output "public_subnets" {
+  description = "Public subnets in the VPC"
+  value       = module.vpc.public_subnets
+}
+
+output "instance_public_ip" {
+  description = "Public IP of the EC2 instance"
+  value       = module.ec2_instance.public_ip
+}
+```
+
+---
+
+## **Step 6: Deploy Infrastructure**
+
+1. Generate an execution plan:
+   ```bash
+   terraform plan
+   ```
+
+2. Deploy the infrastructure:
+   ```bash
+   terraform apply
+   ```
+   Confirm the deployment by typing `yes` when prompted.
+
+---
+
+## **Step 7: Verify Resources**
+
+1. Log in to the AWS Management Console.
+2. Verify:
+   - A VPC is created with public and private subnets.
+   - An EC2 instance is running in one of the public subnets.
+   - The instance has a public IP address.
+3. Use the following command to view outputs:
+   ```bash
+   terraform output
+   ```
+
+---
+
+## **Step 8: Clean Up Resources**
+
+To delete all resources created by Terraform, run:
+
+```bash
+terraform destroy
+```
+
+Confirm the destruction by typing `yes` when prompted.
+
+---
+
+## **References**
+- [Terraform AWS VPC Module Documentation](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+- [Terraform AWS EC2 Instance Module Documentation](https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws/latest)
+
+---
