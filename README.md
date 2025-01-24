@@ -177,7 +177,7 @@ Ensure sensitive files, such as `SAMPLE-WEB-APP` and `SAMPLE-WEB-APP.pub`, are n
 ```gitignore
 SAMPLE-WEB-APP
 SAMPLE-WEB-APP.pub
-
+```
 # Terraform Infrastructure as Code (IaC) Guide
 
 This guide provides step-by-step instructions to deploy a VPC and an EC2 instance using Terraform modules from the Terraform Registry.
