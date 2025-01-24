@@ -108,6 +108,8 @@ Create a CI/CD pipeline to automate the deployment process.
 3. **Test the Pipeline**:
 - Run the pipeline in Jenkins and verify each stage.
 
+![alt text](<Screenshot 2025-01-24 212636.png>)
+![alt text](<Screenshot 2025-01-24 212719.png>)
 ---
 
 ## Additional Notes
