@@ -116,4 +116,3 @@ Create a CI/CD pipeline to automate the deployment process.
 
 ## Additional Notes
 - **Security**: Use `.gitignore` to exclude sensitive files such as SSH keys.
-- **Documentation**: Document all steps clearly, including challenges and solutions.
