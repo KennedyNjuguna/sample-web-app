@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'kennjuguna/sample-web-app'
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials-id'
+        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         CLOUD_SERVER_IP = '3.85.86.106'
         SSH_CREDENTIALS_ID = 'ssh-credentials-id'
     }
