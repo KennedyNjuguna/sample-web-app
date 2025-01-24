@@ -35,10 +35,10 @@ stage('Clone Repository') {
 
         stage('Deploy to Cloud VM') {
             steps {
-                sshagent(['${SSH_CREDENTIALS_ID}']) {
+                sshagent(['ssh-credentials-id']) {
                     script {
                         sh """
-                        ssh -o StrictHostKeyChecking=no user@${CLOUD_SERVER_IP} << EOF
+                        ssh -o StrictHostKeyChecking=no ec2-user@3.85.86.106 << EOF
                         docker pull ${IMAGE_NAME}:${BUILD_NUMBER}
                         docker stop your-container || true
                         docker rm your-container || true
