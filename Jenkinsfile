@@ -37,14 +37,14 @@ stage('Clone Repository') {
             steps {
                 sshagent(['ssh-credentials-id']) {
                     script {
-                        sh """
+                        sh '''
                         ssh -o StrictHostKeyChecking=no -i C:/Users/user/Downloads/user1.pem ec2-user@3.85.86.106 << EOF
                         docker pull ${IMAGE_NAME}:${BUILD_NUMBER}
                         docker stop your-container || true
                         docker rm your-container || true
                         docker run -d --name your-container -p 80:80 ${IMAGE_NAME}:${BUILD_NUMBER}
                         EOF
-                        """
+                        '''
                     }
                 }
             }
