@@ -108,9 +108,9 @@ Create a CI/CD pipeline to automate the deployment process.
 3. **Test the Pipeline**:
 - Run the pipeline in Jenkins and verify each stage.
 
-![Ec2 Success](C:/Users/user/Downloads/Ec2%20Success.png "Ec2 Success")
+![EC2 Success](./images/Ec2Success.jpg "EC2 Success")
+![Jenkins Success](./images/JenkinsSucces.jpg "Jenkins Success")
 
-![Jenkins Success](C:/Users/user/Downloads/Jenkins%20Success.png "Jenkins Success")
 
 ---
 
