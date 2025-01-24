@@ -42,7 +42,7 @@ pipeline {
                     script {
                         // SSH command to EC2 using AWS CLI and Docker
                         sh """
-                        aws ec2 describe-instances --instance-ids i-xxxxxxxx --region ${AWS_REGION} > instance_details.json
+                        aws ec2 describe-instances --instance-ids i-01b178de4a7695306 --region ${AWS_REGION} > instance_details.json
                         INSTANCE_PUBLIC_IP=\$(jq -r '.Reservations[0].Instances[0].PublicIpAddress' instance_details.json)
 
                         # Use the public IP to SSH into the EC2 instance
