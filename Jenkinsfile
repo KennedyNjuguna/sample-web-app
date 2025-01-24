@@ -6,7 +6,7 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         CLOUD_SERVER_IP = '3.85.86.106'
         SSH_CREDENTIALS_ID = 'ssh-credentials-id'
-        AWS_CREDENTIALS_ID = 'aws-credentials-id' // AWS credentials ID in Jenkins
+        AWS_CREDENTIALS_ID = 'aws-credentials' // AWS credentials ID in Jenkins
         AWS_REGION = 'us-east-1' // Replace with your AWS region
     }
 
