@@ -11,7 +11,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repo/your-app.git'
+                git 'https://github.com/KennedyNjuguna/sample-web-app.git
+'
             }
         }
 
