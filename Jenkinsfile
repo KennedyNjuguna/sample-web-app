@@ -13,7 +13,7 @@ stage('Clone Repository') {
     steps {
         git branch: 'main',
             url: 'https://github.com/KennedyNjuguna/sample-web-app.git',
-            credentialsId: 'github-credentials'
+            credentialsId: 'Github-Credentials'
     }
 }
 
