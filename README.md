@@ -216,9 +216,8 @@ Example for VPC and EC2 instance setup:
     value = module.ec2_instance.public_ip
   }
   ```
-Step 6: Deploy Infrastructure
-Generate an execution plan:
-terraform plan
+
+
 ---
 
 ## Task 4: CI/CD Pipeline with Cloud Integration 
