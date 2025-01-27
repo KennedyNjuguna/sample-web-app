@@ -94,10 +94,7 @@ These are SSH key files used for secure communication and authentication.
 
 ### Step-by-Step Guide
 
-#### 1. Add SSH Key Files
-Place the SAMPLE-WEB-APP (private key) and SAMPLE-WEB-APP.pub (public key) securely in the project directory. Ensure these files are protected and not exposed publicly.
-
-#### 2. Create a Dockerfile
+#### 1. Create a Dockerfile
 Define a Dockerfile to containerize your application:
 
 ```Dockerfile
@@ -105,7 +102,7 @@ FROM nginx:alpine
 COPY . /usr/share/nginx/html
 ```
 
-#### 3. Build and Run the Docker Container
+#### 2. Build and Run the Docker Container
 Steps:
 
 - Navigate to the project directory:
@@ -125,7 +122,7 @@ docker build -t sample-web-app .
 ```bash
 docker run -d -p 80:80 sample-web-app
 ```
-#### 4 Bonus: Use Docker Compose for Multi-Container Setup
+#### 3 Bonus: Use Docker Compose for Multi-Container Setup
 - Create a docker-compose.yml File
 ```
 version: '3.8'
