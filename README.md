@@ -4,16 +4,16 @@ This is a simple web application built with HTML, CSS, and JavaScript, complemen
 
 ## Project Structure
 
-sample-web-app/  
-├── assets/                     # Directory for static assets (optional in your structure)  
-├── css/  
-│   └── style.css               # CSS file for styling  
-├── js/  
-│   └── script.js               # JavaScript file for interactivity  
-├── index.html                  # Main HTML file  
-├── keys/                       # Directory for SSH keys  
-│   ├── SAMPLE-WEB-APP          # Private SSH key file  
-│   └── SAMPLE-WEB-APP.pub      # Public SSH key file  
+sample-web-app/
+├── index.html                  # Main HTML file
+├── css/
+│   └── style.css               # CSS file for styling
+├── js/
+│   └── script.js               # JavaScript file for interactivity
+├── keys/
+│   ├── SAMPLE-WEB-APP          # Private SSH key file
+│   └── SAMPLE-WEB-APP.pub      # Public SSH key file
+
 
 ---
 
