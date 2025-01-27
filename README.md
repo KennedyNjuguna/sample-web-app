@@ -82,7 +82,7 @@ p {
 ```
 
 ##### **script.js**
-Contains JavaScript logic to add interactivity, such as event handling for user actions.
+Contains JavaScript logic to add interactivity.
 
 ```javascript
 document.getElementById('changeMessage').addEventListener('click', () => {
