@@ -120,15 +120,18 @@ services:
 ```bash
 docker-compose up -d
 ```
-
 This builds and runs your application in a Docker Compose environment.
+
 ---
 Security Note
+
 Ensure sensitive files, such as SAMPLE-WEB-APP and SAMPLE-WEB-APP.pub, are not exposed to public repositories or unauthorized users. Use .gitignore to exclude them from version control.
 
-```SAMPLE-WEB-APP
-SAMPLE-WEB-APP.pub```
+```
+SAMPLE-WEB-APP
+SAMPLE-WEB-APP.pub
 
+```
 ## Task 3: Infrastructure as Code (IaC)
 ### Step-by-Step Guide
 - Prerequisites
