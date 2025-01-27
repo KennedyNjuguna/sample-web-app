@@ -6,12 +6,19 @@ This is a simple web application built with HTML, CSS, and JavaScript, complemen
 
 sample-web-app/
 ├── index.html                  # Main HTML file
+
 ├── css/
+
 │   └── style.css               # CSS file for styling
+
 ├── js/
+
 │   └── script.js               # JavaScript file for interactivity
+
 ├── keys/
+
 │   ├── SAMPLE-WEB-APP          # Private SSH key file
+
 │   └── SAMPLE-WEB-APP.pub      # Public SSH key file
 
 
