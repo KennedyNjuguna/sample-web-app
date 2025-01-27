@@ -138,13 +138,18 @@ SAMPLE-WEB-APP.pub
 
 Install Terraform:
 Download from the Terraform website.
+
 Install AWS CLI (for AWS deployments):
+
 Download and configure using:
+
 ```bash
 aws configure
 ```
 Provide your Access Key, Secret Key, Region, and Output format.
+
 Create an SSH key pair in your AWS account for accessing the EC2 instance.
+
 #### 1. Create the Project Structure
 
 ```plaintext
