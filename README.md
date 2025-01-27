@@ -218,18 +218,18 @@ Example for VPC and EC2 instance setup:
   terraform apply
   ```  
 
-6. Verify Resources
+6. **Verify Resources**
 
 
-Log in to the AWS Management Console.
+- Log in to the AWS Management Console.
 
 Verify:
 
-A VPC is created with public and private subnets.
+ - A VPC is created with public and private subnets.
 
-An EC2 instance is running in one of the public subnets.
+ - An EC2 instance is running in one of the public subnets.
 
-The instance has a public IP address.
+ - The instance has a public IP address.
 
 Use the following command to view outputs
 ```bash
