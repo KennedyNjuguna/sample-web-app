@@ -2,6 +2,19 @@
 
 This is a simple web application built with HTML, CSS, and JavaScript, complemented by Docker for containerization. Below is a structured guide to help you understand and implement the project seamlessly.
 
+## Project Structure
+
+sample-web-app/  
+├── assets/                     # Directory for static assets (optional in your structure)  
+├── css/  
+│   └── style.css               # CSS file for styling  
+├── js/  
+│   └── script.js               # JavaScript file for interactivity  
+├── index.html                  # Main HTML file  
+├── keys/                       # Directory for SSH keys  
+│   ├── SAMPLE-WEB-APP          # Private SSH key file  
+│   └── SAMPLE-WEB-APP.pub      # Public SSH key file  
+
 ---
 
 ## Task 1: Version Control Integration
@@ -12,6 +25,8 @@ This is a simple web application built with HTML, CSS, and JavaScript, complemen
 
 ##### **index.html**
 Define the structure of the web page and include links to style.css and script.js:
+
+The core HTML file that structures the web page and links to the CSS and JavaScript files.
 
 ```html
 <!DOCTYPE html>
@@ -32,7 +47,8 @@ Define the structure of the web page and include links to style.css and script.j
 ```
 
 ##### **style.css**
-Create basic styling for your web page:
+Defines the styles and layout of the web page, ensuring a visually appealing design.
+
 
 ```css
 body {
@@ -59,13 +75,18 @@ p {
 ```
 
 ##### **script.js**
-Add JavaScript for user interaction:
+Contains JavaScript logic to add interactivity, such as event handling for user actions.
 
 ```javascript
 document.getElementById('changeMessage').addEventListener('click', () => {
     document.getElementById('message').textContent = 'You clicked the button!';
 });
 ```
+
+### **SAMPLE-WEB-APP & SAMPLE-WEB-APP.pub**
+These are SSH key files used for secure communication and authentication.
+- **SAMPLE-WEB-APP**: Private SSH key (keep secure).
+- **SAMPLE-WEB-APP.pub**: Public SSH key.
 
 ---
 
