@@ -106,14 +106,14 @@ docker run -d -p 80:80 sample-web-app
 ```
 #### 4 Bonus: Use Docker Compose for Multi-Container Setup
 - Create a docker-compose.yml File
-
+```
 version: '3.8'
 services:
   web:
     build: .
     ports:
       - "80:80"
-
+```
 
 - Start the Multi-Container Setup
  Run:
