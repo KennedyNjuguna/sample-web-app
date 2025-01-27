@@ -195,7 +195,16 @@ Example for VPC and EC2 instance setup:
   }
   ```
 
-4. **Deploy the Infrastructure**:
+
+4. **Outputs**:
+- Example `outputs.tf`:
+  ```hcl
+  output "instance_public_ip" {
+    value = module.ec2_instance.public_ip
+  }
+  ```
+
+5. **Deploy the Infrastructure**:
 - Initialize Terraform:
   ```bash
   terraform init
@@ -207,16 +216,25 @@ Example for VPC and EC2 instance setup:
 - Apply the deployment:
   ```bash
   terraform apply
-  ```
+  ```  
 
-5. **Outputs**:
-- Example `outputs.tf`:
-  ```hcl
-  output "instance_public_ip" {
-    value = module.ec2_instance.public_ip
-  }
-  ```
+6. Verify Resources
 
+
+Log in to the AWS Management Console.
+
+Verify:
+
+A VPC is created with public and private subnets.
+
+An EC2 instance is running in one of the public subnets.
+
+The instance has a public IP address.
+
+Use the following command to view outputs
+```bash
+terraform output
+```
 
 ---
 
