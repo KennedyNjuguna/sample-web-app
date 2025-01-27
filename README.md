@@ -221,7 +221,7 @@ Example for VPC and EC2 instance setup:
 6. **Verify Resources**
 
 
-- Log in to the AWS Management Console.
+Log in to the AWS Management Console.
 
 Verify:
 
