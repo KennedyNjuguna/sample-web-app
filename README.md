@@ -1,3 +1,159 @@
+# Sample Web Application
+
+This is a simple web application built with HTML, CSS, and JavaScript, complemented by Docker for containerization. Below is a structured guide to help you understand and implement the project seamlessly.
+
+---
+
+## Task 1: Version Control Integration
+
+### Step-by-Step Guide
+
+#### 1. Create the Files
+
+##### **index.html**
+Define the structure of the web page and include links to style.css and script.js:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the Sample Web App</h1>
+    <button id="changeMessage">Click Me!</button>
+    <p id="message">Hello, World!</p>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+##### **style.css**
+Create basic styling for your web page:
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+p {
+    color: #555;
+}
+```
+
+##### **script.js**
+Add JavaScript for user interaction:
+
+```javascript
+document.getElementById('changeMessage').addEventListener('click', () => {
+    document.getElementById('message').textContent = 'You clicked the button!';
+});
+```
+
+---
+
+## Task 2: Containerization with Docker
+
+### Step-by-Step Guide
+
+#### 1. Add SSH Key Files
+Place the SAMPLE-WEB-APP (private key) and SAMPLE-WEB-APP.pub (public key) securely in the project directory. Ensure these files are protected and not exposed publicly.
+
+#### 2. Create a Dockerfile
+Define a Dockerfile to containerize your application:
+
+```Dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+```
+
+#### 3. Build and Run the Docker Container
+Steps:
+
+- Navigate to the project directory:
+
+```bash
+cd /path/to/sample-web-app
+```
+
+- Build the Docker image:
+
+```bash
+docker build -t sample-web-app .
+```
+
+- Run the container:
+
+```bash
+docker run -d -p 80:80 sample-web-app
+```
+#### 4 Bonus: Use Docker Compose for Multi-Container Setup
+- Create a docker-compose.yml File
+
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+
+
+- Start the Multi-Container Setup
+ Run:
+```bash
+docker-compose up -d
+```
+
+This builds and runs your application in a Docker Compose environment.
+---
+Security Note
+Ensure sensitive files, such as SAMPLE-WEB-APP and SAMPLE-WEB-APP.pub, are not exposed to public repositories or unauthorized users. Use .gitignore to exclude them from version control.
+
+```SAMPLE-WEB-APP
+SAMPLE-WEB-APP.pub```
+
+## Task 3: Infrastructure as Code (IaC)
+### Step-by-Step Guide
+- Prerequisites
+
+Install Terraform:
+Download from the Terraform website.
+Install AWS CLI (for AWS deployments):
+Download and configure using:
+```bash
+aws configure
+```
+Provide your Access Key, Secret Key, Region, and Output format.
+Create an SSH key pair in your AWS account for accessing the EC2 instance.
+#### 1. Create the Project Structure
+
+```plaintext
+terraform-iac/
+├── main.tf        # Main Terraform configuration
+├── variables.tf   # Input variables
+├── outputs.tf     # Outputs
+├── terraform.tfvars # (Optional) Variable values
+```
+
+#### 2. Define Resources in main.tf
+Example for VPC and EC2 instance setup:
 
 2. **Define the VPC**:
 - Example `main.tf`:
@@ -52,13 +208,12 @@
     value = module.ec2_instance.public_ip
   }
   ```
-
+Step 6: Deploy Infrastructure
+Generate an execution plan:
+terraform plan
 ---
 
-## Task 4: CI/CD Pipeline with Cloud Integration (25%)
-
-### **Objective**
-Create a CI/CD pipeline to automate the deployment process.
+## Task 4: CI/CD Pipeline with Cloud Integration 
 
 ### **Steps**
 
