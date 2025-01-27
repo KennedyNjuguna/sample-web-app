@@ -484,7 +484,7 @@ terraform output
 2. Log in with default credentials:
    - **Username**: admin
    - **Password**: admin
-3. Change the password upon first login.
+
 
 ### **Step 4: Configure Prometheus as a Data Source**
 1. In Grafana, go to **Configuration > Data Sources**.
